@@ -10,13 +10,13 @@
             {!! Form::model($task, ['route' => 'tasks.store']) !!}
                     {!! Form::label('status', 'ステータス:') !!}
                     {!! Form::text('status', null, ['class' => 'form-control']) !!}
-                </div>
+                
                     
                 <div class="form-group">
                     {!! Form::label('content', 'タスク:') !!}
                     {!! Form::text('content', null, ['class' => 'form-control']) !!}
-                </div>
         </div>
+        
         
         <button type="button" class="btn btn-default">
           <span class="glyphicon glyphicon-sunglasses"></span>
