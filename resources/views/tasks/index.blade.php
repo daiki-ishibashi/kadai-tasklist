@@ -6,6 +6,7 @@
     <h1>タスク一覧</h1>
 
     @if (count($tasks) > 0)
+        <div class="col-md-6">
         <table class="table table-striped">
             <thead>
                 <tr>
@@ -21,6 +22,7 @@
                         <td>{{ $task->status }}</td>
                         <td>{{ $task->content }}</td>
                     </tr>
+        </div>
                 @endforeach
             </tbody>
         </table>
