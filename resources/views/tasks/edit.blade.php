@@ -21,5 +21,6 @@
         {!! Form::submit('更新', ['class' => 'btn btn-warning']) !!}
 
     {!! Form::close() !!}
+    
 
 @endsection

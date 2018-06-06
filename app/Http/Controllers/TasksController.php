@@ -24,10 +24,20 @@ class TasksController extends Controller
                 'tasks' => $tasks,
             ];
             $data += $this->counts($user);
-            return view('users.show', $data);
+
+            return view('tasks.index', $data);
         }else {
             return view('welcome');
         }
+    }
+    
+    public function create()
+    {
+        $task = new task;
+
+        return view('tasks.create', [
+            'task' => $task,
+        ]);
     }
     
     public function store(Request $request)
@@ -49,22 +59,25 @@ class TasksController extends Controller
     public function show($id)
         {
             $task = Task::find($id);
-        
+            if (\Auth::user()->id === $task->user_id){
             return view('tasks.show', [
                 'task' => $task,
             ]);
+            }else {
+            return redirect("/");
+            }   
         }
-
     public function edit($id)
         {
             $task = \App\Task::find($id);
-    
+            if (\Auth::user()->id === $task->user_id) {
             return view('tasks.edit', [
                 'task' => $task,
             ]);
+        }else {
+            return redirect("/");
+            }
         }
-
-
     public function update(Request $request, $id)
     {
         $this->validate($request, [
@@ -89,6 +102,6 @@ class TasksController extends Controller
             $task->delete();
         }
 
-        return redirect()->back();
+        return redirect("/");
     }
 }

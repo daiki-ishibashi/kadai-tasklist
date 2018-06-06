@@ -18,4 +18,7 @@ class Controller extends BaseController
             'count_tasks' => $count_tasks,
         ];
     }
+
+     protected $redirectTo = '/';
+
 }
